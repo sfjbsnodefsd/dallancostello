@@ -9,10 +9,9 @@ app.use(bodyParser.json());
 app.use(coursesRouter);
 
 
-mongoose.connect(process.env.DB_CONNECTION_URL,() => {
-    console.log("connected to db successfully");
+mongoose.connect(process.env.DB_CONNECTION_URL,() =>{
+    console.log("connected to db sucessfully");
 })
-
 app.listen(process.env.PORT,() => {
-    console.log("server is starting")
+    console.log("server is starting ");
 })

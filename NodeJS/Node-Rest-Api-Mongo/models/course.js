@@ -5,7 +5,7 @@ const Course = mongoose.Schema({
         type:String,
         require:true
     },
-    genre: {
+    genre:{
         type:String,
         require:true
     },
@@ -13,7 +13,6 @@ const Course = mongoose.Schema({
         type:Number,
         require:true
     },
-    active: Boolean
+    active:Boolean
 })
-
-module.exports=mongoose.model("courses", Course)
+module.exports=mongoose.model("courses",Course)

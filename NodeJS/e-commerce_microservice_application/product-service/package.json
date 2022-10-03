@@ -1,17 +1,19 @@
 {
-  "name": "project-crud",
+  "name": "product-service",
   "version": "1.0.0",
-  "description": "this is a node js application where we are going to perform crud operation with mysql",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Nishant",
+  "author": "Nishanr",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.20.0",
+    "amqplib": "^0.10.3",
+    "dotenv": "^16.0.3",
     "express": "^4.18.1",
-    "mysql": "^2.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.6.2",
     "nodemon": "^2.0.20"
   }
 }
