@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken")
 
-export async function isAuthenticated(req, res, next){
+module.export = async function isAuthenticated(req, res, next){
     //Bearer <token>
     const token = req.headers("authorization").split(" ")[1];
 
