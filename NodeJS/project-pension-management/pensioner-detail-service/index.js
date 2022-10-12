@@ -32,8 +32,9 @@ connect();
 // buy a new product
 
 app.post("/pensioner/create", isAuthenticated, async (req, res) => {
-  const { name, dob, pan, salary, allowances, selfOrFamily, bankDetails} = req.body;
+  const { aadhaar,name, dob, pan, salary, allowances, selfOrFamily, bankDetails} = req.body;
   const newPensioner = new Pensioner({
+    aadhaar,
     name,
   dob,
   pan,
@@ -44,6 +45,26 @@ app.post("/pensioner/create", isAuthenticated, async (req, res) => {
   });
   newPensioner.save();
   return res.json(newPensioner);
+});
+
+app.get("/allpensioners", async (req, res) => {
+  try {
+    const pensioners = await Pensioner.find();
+    res.json(pensioners);
+  } catch (err) {
+    res.json(err);
+  }
+});
+
+app.get("/pensioner/:aadhaar", async (req, res) => {
+  const aadhaar = req.params.aadhaar;
+
+  try {
+    const pensioner = await Pensioner.find({aadhaar : aadhaar }, req.body);
+    res.json(pensioner);
+  } catch (error) {
+    res.json(error);
+  }
 });
 
 // user will send a lift of the products that the user wants to buy , they will be identified by the product id

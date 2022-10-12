@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const PensionerSchema = new Schema({
+  aadhaar: Number, 
   name: String,
   dob: String,
   pan: Number,
