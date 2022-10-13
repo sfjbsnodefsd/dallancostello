@@ -67,29 +67,50 @@ app.get("/pensioner/:aadhaar", async (req, res) => {
   }
 });
 
+app.delete("/delete/:aadhaar", async (req, res) => {
+  try {
+    await Pensioner.remove({ aadhaar: req.params.aadhaar });
+    res.status(200).json({
+      message: "deleted sucessfully",
+    });
+  } catch (error) {
+    res.send(error);
+  }
+});
+
+app.put("/update/:aadhaar", async (req, res) => {
+  const aadhaar = req.params.aadhaar;
+
+  try {
+    const pensioner = await Pensioner.updateOne({ aadhaar: aadhaar }, req.body);
+    res.json(pensioner);
+  } catch (error) {
+    res.json(error);
+  }
+});
 // user will send a lift of the products that the user wants to buy , they will be identified by the product id
 // the order will be created of those products and the sum of the products prices will be the total billing amount
 
-// app.post("/product/buy", isAuthenticated, async (req, res) => {
-//   const { ids } = req.body;
-//   const products = await Product.find({ _id: { $in: ids } });
+app.post("/pension/create/:aadhaar", isAuthenticated, async (req, res) => {
+  const { aadhaar } = req.params.aadhaar;
+  const pensioners = await Pensioner.find({ aadhaar: aadhaar }, req.body);
 
-//   channel.sendToQueue(
-//     "ORDER",
-//     Buffer.from(
-//       JSON.stringify({
-//         products,
-//         userEmail: req.user.email,
-//       })
-//     )
-//   );
-//   channel.consume("PRODUCT", data => {
-//     console.log("consuming product queue");
-//      order = JSON.parse(data.content);
-//      channel.ack(data);
-//   })
-//   return res.json(order)
-// });
+  channel.sendToQueue(
+    "PENSION",
+    Buffer.from(
+      JSON.stringify({
+        pensioners,
+        aadhaar: req.user.aadhaar,
+      })
+    )
+  );
+  channel.consume("PENSIONER", data => {
+    console.log("consuming pensioner queue");
+     pension = JSON.parse(data.content);
+     channel.ack(data);
+  })
+  return res.json(pension)
+});
 
 app.listen(5001, () => {
   console.log(`product service is working at port 5001`);
