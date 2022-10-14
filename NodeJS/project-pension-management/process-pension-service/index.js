@@ -6,7 +6,9 @@ const amqp = require("amqplib");
 const isAuthenticated = require('../isAuthenticated');
 app.use(express.json());
 var channel, connection;
-const {Pension} = require('./Pension');
+const Pensioner = require('./Pension');
+var pensionAmount = 0;
+var bankServiceCharge=0;
 
 
 mongoose.connect(
@@ -25,21 +27,33 @@ mongoose.connect(
     connection = await amqp.connect(amqpServer);
     channel = await connection.createChannel();
     await channel.assertQueue("PENSION")
+  }
 
 
     function createPension(pensioners, aadhaar){
       let newPensionAmount = 0;
-      for(t=0; t<pensioners.length; ++t) {
-        if (pensioners[t].selfOrFamily == "Self")
+      console.log(pensioners[0].selfOrFamily);
+     
+        if (pensioners[0].selfOrFamily == "Self")
         {
-            newPensionAmount = (pensioners[t].salary * 0.8) + pensioners[t].allowances
+            newPensionAmount = (pensioners[0].salary * 0.8) + pensioners[0].allowances
         }
-        else if (pensioners[t].selfOrFamily == "Family")
+        else if (pensioners[0].selfOrFamily == "Family")
         {
-            newPensionAmount = (pensioners[t].salary * 0.5) + pensioners[t].allowances
+            newPensionAmount = (pensioners[0].salary * 0.5) + pensioners[0].allowances
         }
-      }
-      const newOPension = new Pension({
+
+        if (pensioners[0].bankDetails.publicOrPrivate == "Public")
+        {
+            bankServiceCharge = 500;
+        }
+        else if (pensioners[0].bankDetails.publicOrPrivate == "Private")
+        {
+            bankServiceCharge = 550;
+        }
+        pensionAmount = newPensionAmount;
+      
+      const newPension = new Pensioner({
         pensioners,
         pensionAmount: newPensionAmount,
         bankServiceCharge: 500
@@ -47,13 +61,15 @@ mongoose.connect(
     newPension.save();
     return newPension;
   }
-  }
+
   connect().then(() => {
     channel.consume("PENSION", data => {
-      const {pensions, aadhaar} = JSON.parse(data.content);
-      const newPension = createPension(pensions, aadhaar)
+      const {pensioners, pensionAmount} = JSON.parse(data.content);
+      const newPension = createPension(pensioners, pensionAmount)
       console.log("consuming pension queue")
-      console.log(pensions);
+      console.log(pensioners[0]);
+      console.log("Pension amount = "+pensionAmount);
+      console.log("Bank Service Charge = "+bankServiceCharge);
       channel.ack(data);
       channel.sendToQueue("PENSIONER", Buffer.from(JSON.stringify({newPension})));
     })

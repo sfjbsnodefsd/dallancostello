@@ -92,7 +92,7 @@ app.put("/update/:aadhaar", async (req, res) => {
 // the order will be created of those products and the sum of the products prices will be the total billing amount
 
 app.post("/pension/create/:aadhaar", isAuthenticated, async (req, res) => {
-  const { aadhaar } = req.params.aadhaar;
+  const { aadhaar } = req.params;
   const pensioners = await Pensioner.find({ aadhaar: aadhaar }, req.body);
 
   channel.sendToQueue(
@@ -109,7 +109,7 @@ app.post("/pension/create/:aadhaar", isAuthenticated, async (req, res) => {
      pension = JSON.parse(data.content);
      channel.ack(data);
   })
-  return res.json(pension)
+  //return res.json(pension)
 });
 
 app.listen(5001, () => {
