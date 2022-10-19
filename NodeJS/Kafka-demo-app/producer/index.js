@@ -10,8 +10,14 @@ const stream = kafka.createWriteStream(
 );
 
 function queueMessage() {
-    const result = stream.write(Buffer.from("Hey my name is dallan"));
-    console.log(result);
+    const success = stream.write(Buffer.from("Hey my name is dallan"));
+    if(success)
+    {
+        console.log("message published successfully to stream");
+    } else {
+        console.log("something went wrong.")
+    }
+    
 }
 
 setInterval(()=>{
