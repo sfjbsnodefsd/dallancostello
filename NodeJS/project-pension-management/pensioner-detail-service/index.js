@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT;
+//const PORT = process.env.PORT;
 const mongoose = require("mongoose");
 //const jwt = require("jsonwebtoken");
 const amqp = require("amqplib");
