@@ -31,16 +31,16 @@ mongoose.connect(
 
 
     function createPension(pensioners, aadhaar){
-      let newPensionAmount = 0;
+      //let newPensionAmount = 0;
       console.log(pensioners[0].selfOrFamily);
      
         if (pensioners[0].selfOrFamily == "Self")
         {
-            newPensionAmount = (pensioners[0].salary * 0.8) + pensioners[0].allowances
+            pensionAmount = (pensioners[0].salary * 0.8) + pensioners[0].allowances
         }
         else if (pensioners[0].selfOrFamily == "Family")
         {
-            newPensionAmount = (pensioners[0].salary * 0.5) + pensioners[0].allowances
+            pensionAmount = (pensioners[0].salary * 0.5) + pensioners[0].allowances
         }
 
         if (pensioners[0].bankDetails.publicOrPrivate == "Public")
@@ -51,11 +51,12 @@ mongoose.connect(
         {
             bankServiceCharge = 550;
         }
-        pensionAmount = newPensionAmount;
+        //pensionAmount = newPensionAmount;
+        console.log(pensionAmount);
       
       const newPension = new Pensioner({
         pensioners,
-        pensionAmount: newPensionAmount,
+        pensionAmount: pensionAmount,
         bankServiceCharge: 500
     });
     newPension.save();
@@ -64,7 +65,7 @@ mongoose.connect(
 
   connect().then(() => {
     channel.consume("PENSION", data => {
-      const {pensioners, pensionAmount} = JSON.parse(data.content);
+      const {pensioners} = JSON.parse(data.content);
       const newPension = createPension(pensioners, pensionAmount)
       console.log("consuming pension queue")
       console.log(pensioners[0]);
