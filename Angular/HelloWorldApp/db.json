@@ -1,0 +1,10 @@
+{
+    "users":[
+        {
+            "name":"Dallan",
+            "age":32,
+            "gender":"Male",
+            "id":1
+        }
+    ]
+}
