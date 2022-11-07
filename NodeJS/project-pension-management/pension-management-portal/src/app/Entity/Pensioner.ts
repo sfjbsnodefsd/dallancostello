@@ -6,9 +6,8 @@ export default class Pensioner {
     salary:number =0;
     allowances:number = 0;
     selfOrFamily:String ="";
-    // bankDetails: {
-    //   name: String=""
-    //   number: Number=0
-    //   publicOrPrivate: String=""
-    // };
+    bankName:String="";
+    bankNumber: Number=0;
+    publicOrPrivate: String="";
+  
 }

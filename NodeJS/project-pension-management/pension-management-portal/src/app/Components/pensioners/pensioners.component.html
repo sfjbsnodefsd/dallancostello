@@ -1,1 +1,12 @@
-<p>pensioners works!</p>
+<h1 style="text-align: center ; border-style: groove ; border-color: #7959FF;" class= "display-2">List of Registered Pensioners</h1>
+<br />
+<ul style="margin:20px ; border-color: #7959FF; border-style: double;"  *ngFor ="let p of pensioners; index as i" class="list-group list-group-flush">
+    <li class="list-group-item">
+        <span>Name: {{p.name }}</span>
+        <span> Age: {{p.dob }}</span>
+        <br />
+        <button type="button" style="margin-left: 1400px ; color: red; background-color: red;" class = "btn-close" aria-label="Close"></button>
+    </li>
+    
+    
+  </ul>

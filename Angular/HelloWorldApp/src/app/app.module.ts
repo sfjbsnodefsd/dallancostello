@@ -9,6 +9,7 @@ import { UserFormComponent } from './Components/user-form/user-form.component';
 import { HomeComponent } from './Components/home/home.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { RegisteredUsersComponent } from './Components/registered-users/registered-users.component';
+import { InterpolationDemoComponent } from './Components/interpolation-demo/interpolation-demo.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { RegisteredUsersComponent } from './Components/registered-users/register
     UserFormComponent,
     HomeComponent,
     NavbarComponent,
-    RegisteredUsersComponent
+    RegisteredUsersComponent,
+    InterpolationDemoComponent
   ],
   imports: [
     BrowserModule,

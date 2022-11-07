@@ -6,6 +6,8 @@ const mongoose = require("mongoose");
 const amqp = require("amqplib");
 const Pensioner = require("./Pensioner");
 const isAuthenticated = require("../isAuthenticated");
+const cors = require('cors');
+app.use(cors());
 app.use(express.json());
 var channel, connection;
 
