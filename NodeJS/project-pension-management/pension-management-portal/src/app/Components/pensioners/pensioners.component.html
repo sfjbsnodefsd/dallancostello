@@ -1,12 +1,11 @@
 <h1 style="text-align: center ; border-style: groove ; border-color: #7959FF;" class= "display-2">List of Registered Pensioners</h1>
 <br />
-<ul style="margin:20px ; border-color: #7959FF; border-style: double;"  *ngFor ="let p of pensioners; index as i" class="list-group list-group-flush">
-    <li class="list-group-item">
-        <span>Name: {{p.name }}</span>
-        <span> Age: {{p.dob }}</span>
-        <br />
-        <button type="button" style="margin-left: 1400px ; color: red; background-color: red;" class = "btn-close" aria-label="Close"></button>
-    </li>
-    
-    
-  </ul>
+<select name = "aadhaars" id="aadhaars" (change) = "newPensioner($event)">
+    <option>All</option>
+    <option *ngFor ="let p of pensionersCopy" value="{{p.aadhaar}}">{{p.aadhaar}}</option>
+</select>
+<table class="table table-striped">
+    <thead><th>Name</th><th>Aadhaar</th><th>DOB</th><th>PAN</th><th>Salary</th><th>Self/Family</th><th>Allowances</th><th>Bank</th><th>Account No.</th><th>Public/Private</th></thead>
+    <tr *ngFor ="let p of pensioners; index as i"><td>{{p.name }}</td><td>{{p.aadhaar }}</td><td>{{p.dob }}</td><td>{{p.pan }}</td><td>{{p.salary }}</td><td>{{p.selfOrFamily }}</td>
+        <td>{{p.allowances }}</td><td>{{p.bankDetails.name }}</td><td>{{p.bankDetails.number }}</td><td>{{p.bankDetails.publicOrPrivate }}</td></tr>
+</table>

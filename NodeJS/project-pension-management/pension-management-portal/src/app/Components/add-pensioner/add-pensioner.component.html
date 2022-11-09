@@ -1,0 +1,61 @@
+<h2>{{title}}</h2>
+<div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default">Aadhaar</span>
+    <input type="text" [(ngModel)]="pensioner.aadhaar" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+  </div>
+<br />
+
+<div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+    <input type="text" [(ngModel)]="pensioner.name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+  </div>
+<br />
+<div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default">DOB</span>
+    <input type="text" [(ngModel)]="pensioner.dob" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+  </div>
+<br />
+<div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default">PAN</span>
+    <input type="text" [(ngModel)]="pensioner.pan" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+  </div>
+<br />
+
+<div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default">Salary</span>
+    <input type="text" [(ngModel)]="pensioner.salary" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+  </div>
+<br />
+<div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default">Allowances</span>
+    <input type="text" [(ngModel)]="pensioner.allowances" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+  </div>
+<br />
+
+<div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default">Self/Family</span>
+    <input type="text" [(ngModel)]="pensioner.selfOrFamily" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+  </div>
+<br />
+
+<div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default">Bank Name</span>
+    <input type="text" [(ngModel)]="pensioner.bankDetails.name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+  </div>
+<br />
+<div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default">Bank No:</span>
+    <input type="text" [(ngModel)]="pensioner.bankDetails.number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+  </div>
+<br />
+
+<div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default">Public/Private</span>
+    <input type="text" [(ngModel)]="pensioner.bankDetails.publicOrPrivate" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+  </div>
+<br />
+
+
+
+
+  <button  type="button" style="position: relative; align-items: center; margin-left: 770px;" (click)="save()" class="btn btn-outline-primary">Submit</button>

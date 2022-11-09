@@ -33,7 +33,7 @@ connect();
 // create a new product
 // buy a new product
 
-app.post("/pensioner/create", isAuthenticated, async (req, res) => {
+app.post("/pensioner/create", async (req, res) => {
   const { aadhaar,name, dob, pan, salary, allowances, selfOrFamily, bankDetails} = req.body;
   const newPensioner = new Pensioner({
     aadhaar,
