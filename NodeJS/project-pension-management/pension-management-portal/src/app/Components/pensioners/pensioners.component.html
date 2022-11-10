@@ -2,10 +2,11 @@
 <br />
 <select name = "aadhaars" id="aadhaars" (change) = "newPensioner($event)">
     <option>All</option>
-    <option *ngFor ="let p of pensionersCopy" value="{{p.aadhaar}}">{{p.aadhaar}}</option>
+    <option *ngFor ="let p of pensionersCopy; index as i" value="{{p.aadhaar}}">{{p.aadhaar}}</option>
 </select>
 <table class="table table-striped">
     <thead><th>Name</th><th>Aadhaar</th><th>DOB</th><th>PAN</th><th>Salary</th><th>Self/Family</th><th>Allowances</th><th>Bank</th><th>Account No.</th><th>Public/Private</th></thead>
     <tr *ngFor ="let p of pensioners; index as i"><td>{{p.name }}</td><td>{{p.aadhaar }}</td><td>{{p.dob }}</td><td>{{p.pan }}</td><td>{{p.salary }}</td><td>{{p.selfOrFamily }}</td>
-        <td>{{p.allowances }}</td><td>{{p.bankDetails.name }}</td><td>{{p.bankDetails.number }}</td><td>{{p.bankDetails.publicOrPrivate }}</td></tr>
+        <td>{{p.allowances }}</td><td>{{p.bankDetails.name }}</td><td>{{p.bankDetails.number }}</td><td>{{p.bankDetails.publicOrPrivate }}</td>
+        <td><button type="button" style="color: red; background-color: red;" (click)="deleteRow(p,i)" class = "btn-close" aria-label="Close"></button></td></tr>
 </table>

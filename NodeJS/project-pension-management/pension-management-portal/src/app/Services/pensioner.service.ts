@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 const BASE_URL1 = "http://localhost:5001/allpensioners";
 const BASE_URL3 = "http://localhost:5001/pensioner/create";
+const BASE_URL4 = "http://localhost:5001/delete";
+
 
 
 @Injectable({
@@ -37,6 +39,10 @@ export class PensionerService {
      
     }}) {
       return this.http.post(BASE_URL3, pensioner);
+    }
+
+    deletePensioner(pensioner, index) {
+      return this.http.delete(BASE_URL4+'/'+ pensioner.aadhaar);
     }
 
   

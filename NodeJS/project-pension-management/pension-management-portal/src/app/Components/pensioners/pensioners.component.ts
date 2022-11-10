@@ -27,6 +27,14 @@ export class PensionersComponent implements OnInit {
     })
   }
 
+  deleteRow(pensioner:any, index:any){
+    const observables = this.pensionerService.deletePensioner(pensioner, index);
+    observables.subscribe((response:any) => {
+      console.log(response);
+      this.pensioners.splice(index,1)
+    })
+  }
+
   newPensioner(event) {
     console.log(event.target.value);
     //console.log(this.pensionersCopy)
