@@ -9,6 +9,7 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
 import { PensionersComponent } from './Components/pensioners/pensioners.component';
 import { HomeComponent } from './Components/home/home.component';
 import { AddPensionerComponent } from './Components/add-pensioner/add-pensioner.component';
+import { ProcessPensionerComponent } from './Components/process-pensioner/process-pensioner.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AddPensionerComponent } from './Components/add-pensioner/add-pensioner.
     NavbarComponent,
     PensionersComponent,
     HomeComponent,
-    AddPensionerComponent
+    AddPensionerComponent,
+    ProcessPensionerComponent
   ],
   imports: [
     BrowserModule,
