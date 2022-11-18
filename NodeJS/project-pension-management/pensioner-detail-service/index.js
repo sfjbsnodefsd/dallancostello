@@ -49,7 +49,7 @@ app.post("/pensioner/create", async (req, res) => {
   return res.json(newPensioner);
 });
 
-app.get("/allpensioners", async (req, res) => {
+app.get("/allpensioners", isAuthenticated, async (req, res) => {
   try {
     const pensioners = await Pensioner.find();
     res.json(pensioners);

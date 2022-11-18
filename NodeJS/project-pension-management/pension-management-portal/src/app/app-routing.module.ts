@@ -4,8 +4,9 @@ import { PensionersComponent } from './Components/pensioners/pensioners.componen
 import { HomeComponent } from './Components/home/home.component';
 import { AddPensionerComponent } from './Components/add-pensioner/add-pensioner.component';
 import { ProcessPensionerComponent } from './Components/process-pensioner/process-pensioner.component';
+import { LoginComponent } from './Components/login/login.component';
 
-const routes: Routes = [{path:"", component:HomeComponent},{path:"pensioners", component:PensionersComponent},{path:"addpensioner", component:AddPensionerComponent},{path:"process", component:ProcessPensionerComponent}];
+const routes: Routes = [{path:"", component:HomeComponent},{path:"pensioners", component:PensionersComponent},{path:"addpensioner", component:AddPensionerComponent},{path:"process", component:ProcessPensionerComponent},{path:"login", component:LoginComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

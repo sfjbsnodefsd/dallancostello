@@ -1,15 +1,18 @@
 const jwt = require("jsonwebtoken")
+const express = require('express');
+const app = express();
+const secret = 'secret';
 
-module.exports = async function isAuthenticated(req, res, next){
+module.exports = async function (req, res, next){
     //Bearer <token>
-    const token = req.headers["authorization"].split(" ")[1];
+    const header = req.headers.authorization;
+    const token = header?.split(" ")[1];
+    console.log(token);
 
-    jwt.verify(token, "secret", (err, user) =>{
+    jwt.verify(token, secret, (err, user) =>{
         if(err) {
-            return res.json({
-                success: 0,
-                message:"Unauthorized",
-            });
+            console.log(err);
+            req.authenticated=false;
         }
         else {
             req.user = user;

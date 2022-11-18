@@ -19,6 +19,7 @@ export class PensionersComponent implements OnInit {
     const promise = this.pensionerService.getPensioners();
     promise.subscribe((response) => {
       console.log(response);
+      console.log(localStorage.getItem('user-token'));
       this.pensioners = response as Pensioner[];
      
         this.pensionersCopy = this.pensioners;
