@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { UserToken } from '../Entity/UserToken';
 import { map } from 'rxjs';
+const BASE_URL1 = "http://localhost:5000/auth/reg";
 
 @Injectable({
   providedIn: 'root'
@@ -47,5 +48,13 @@ export class UserService {
 
    }
 
+   registerUser(user:{name:String;
+    email:String;
+    password:String;
+    }) {
+      return this.http.post(BASE_URL1, user);
+    }
+
+    
    
 }

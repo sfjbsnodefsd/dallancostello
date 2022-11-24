@@ -45,26 +45,32 @@ export class PensionersComponent implements OnInit {
 
     if (event.target.value == "All")
     {
-      const promise = this.pensionerService.getPensioners();
-    promise.subscribe((response) => {
-      console.log(response);
-      this.pensioners = response as Pensioner[];
+    //   const promise = this.pensionerService.getPensioners();
+    // promise.subscribe((response) => {
+    //   console.log(response);
+    //   this.pensioners = response as Pensioner[];
      
-        //this.pensionersCopy = this.pensioners;
-        //this.count++;
+    //     //this.pensionersCopy = this.pensioners;
+    //     //this.count++;
       
-    })
+    // })
+    this.pensioners = this.pensionersCopy;
     }
 
     else if (event.target.value != "All")
     {
-      //console.log(this.pensioner);
-      var promise = this.pensionerService.getPensionerByAadhaar(this.pensioner);
-      promise.subscribe((response) => {
-        console.log(response);
-        this.pensioners = response as Pensioner[];
+      console.log(this.pensioner);
+      // const promise = this.pensionerService.getPensionerByAadhaar(this.pensioner);
+      // promise.subscribe((response) => {
+      //   console.log(response);
+      //   this.pensioners = response as Pensioner[];
         //this.pensionersCopy = this.pensioners;
-    })
+    //})
+      var selectedPensioner = this.pensioners.filter(function (pensioner) {
+        return pensioner.aadhaar == event.target.value;
+        console.log(pensioner.aadhaar);
+      })
+      this.pensioners = selectedPensioner;
 
     }
 

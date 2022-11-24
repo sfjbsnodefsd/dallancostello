@@ -28,17 +28,22 @@
             
           </li>
           <li class="nav-item active" *ngIf="!isLogged">
-            <a class="nav-link " routerLink="login" href="#">
+            <a class="nav-link " routerLink="login" href="/">
               Login
             </a>
           
           </li>
           <li class="nav-item active" *ngIf="isLogged">
-            <a class="nav-link " href="#" (click) ="logout()">
+            <a class="nav-link " href="/" (click) ="logout()">
               Logout
             </a>
           
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link " routerLink="register" href="#">
+              Register
+            </a>
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

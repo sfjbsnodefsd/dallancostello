@@ -12,6 +12,7 @@ import { AddPensionerComponent } from './Components/add-pensioner/add-pensioner.
 import { ProcessPensionerComponent } from './Components/process-pensioner/process-pensioner.component';
 import { LoginComponent } from './Components/login/login.component';
 import { JwtInterceptor } from './Interceptors/jwt.interceptor';
+import { RegisterComponent } from './Components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { JwtInterceptor } from './Interceptors/jwt.interceptor';
     HomeComponent,
     AddPensionerComponent,
     ProcessPensionerComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
