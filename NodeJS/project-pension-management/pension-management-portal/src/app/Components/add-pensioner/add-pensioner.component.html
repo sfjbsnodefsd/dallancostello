@@ -31,12 +31,22 @@
     <input type="text" [(ngModel)]="pensioner.allowances" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
   </div>
 <br />
-
-<div class="input-group mb-3">
-    <span class="input-group-text" id="inputGroup-sizing-default">Self/Family</span>
-    <input type="text" [(ngModel)]="pensioner.selfOrFamily" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+<strong>&nbsp;&nbsp;Plan Type</strong>
+<hr>
+<div style="margin:15px ;"  class="form-check">
+  
+    <input class="form-check-input" [(ngModel)]="pensioner.selfOrFamily" type="radio" value="Self" id="flexCheck">
+    <label class="form-check-label" for="flexCheckDefault">
+      Self
+    </label>
   </div>
-<br />
+  <div style="margin:15px ;" class="form-check">
+    <input class="form-check-input" type="radio" [(ngModel)]="pensioner.selfOrFamily" value="Family" id="flexCheck" >
+    <label class="form-check-label" for="flexCheckChecked">
+      Family
+    </label>
+  </div>
+  <hr>
 
 <div class="input-group mb-3">
     <span class="input-group-text" id="inputGroup-sizing-default">Bank Name</span>
@@ -49,10 +59,22 @@
   </div>
 <br />
 
-<div class="input-group mb-3">
-    <span class="input-group-text" id="inputGroup-sizing-default">Public/Private</span>
-    <input type="text" [(ngModel)]="pensioner.bankDetails.publicOrPrivate" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+<strong>&nbsp;&nbsp;Plan Sector</strong>
+<hr>
+<div style="margin:15px ;"  class="form-check">
+  
+    <input class="form-check-input" [(ngModel)]="pensioner.bankDetails.publicOrPrivate" type="radio" value="Public" id="flexCheck">
+    <label class="form-check-label" for="flexCheckDefault">
+      Public
+    </label>
   </div>
+  <div style="margin:15px ;" class="form-check">
+    <input class="form-check-input" type="radio" [(ngModel)]="pensioner.bankDetails.publicOrPrivate" value="Private" id="flexCheck" >
+    <label class="form-check-label" for="flexCheckChecked">
+      Private
+    </label>
+  </div>
+  <hr>
 <br />
 
 

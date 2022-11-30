@@ -9,24 +9,29 @@ import { PensionerService } from 'src/app/Services/pensioner.service';
 })
 export class AddPensionerComponent implements OnInit {
   title = "Fill out the form below";
+  validForm = false;
   public pensioner: Pensioner={
     name:'',
     dob:'',
-    pan:0,
-    aadhaar:0,
-    salary:0,
-    allowances:0,
+    pan:null,
+    aadhaar:null,
+    salary:null,
+    allowances:null,
     selfOrFamily:'',
     bankDetails: {
       name: '',
-      number: 0,
+      number: null,
       publicOrPrivate:''
     }
   };
 
   save()
   {
+    
     console.log(this.pensioner);
+    if(this.pensioner.name != "" && this.pensioner.dob != "" && this.pensioner.pan != null && this.pensioner.aadhaar != null && this.pensioner.salary != null &&
+    this.pensioner.allowances != null && this.pensioner.selfOrFamily != "" && this.pensioner.bankDetails.name != "" && this.pensioner.bankDetails.number != null && this.pensioner.bankDetails.publicOrPrivate != "")
+    {
     const observables = this.pensionerService.savePensioner(this.pensioner);
     observables.subscribe(
       (response: any) => {
@@ -36,6 +41,25 @@ export class AddPensionerComponent implements OnInit {
         console.log(error);
       }
     );
+    alert("Pensioner successfully created");
+    this.pensioner ={
+      name:'',
+      dob:'',
+      pan:null,
+      aadhaar:null,
+      salary:null,
+      allowances:null,
+      selfOrFamily:'',
+      bankDetails: {
+        name: '',
+        number: null,
+        publicOrPrivate:''
+      }
+    }
+    }
+    else {
+      alert("Please fill out all fields");
+    }
   }
 
   constructor(private pensionerService: PensionerService) { }

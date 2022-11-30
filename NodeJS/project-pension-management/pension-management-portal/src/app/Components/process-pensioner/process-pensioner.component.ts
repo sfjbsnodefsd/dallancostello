@@ -72,6 +72,7 @@ export class ProcessPensionerComponent implements OnInit {
     //pensionAmount = newPensionAmount;
     console.log(pensionAmount);
     console.log(bankServiceCharge);
+    alert("Details for "+pensioner.name+"\nPension Amount: "+pensionAmount+"\nBank Service Charge: "+bankServiceCharge);
   }
 
 }
