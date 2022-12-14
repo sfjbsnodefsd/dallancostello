@@ -8,5 +8,5 @@
     <thead><th>Name</th><th>Aadhaar</th><th>DOB</th><th>PAN</th><th>Salary</th><th>Self/Family</th><th>Allowances</th><th>Bank</th><th>Account No.</th><th>Public/Private</th></thead>
     <tr *ngFor ="let p of pensioners; index as i"><td>{{p.name }}</td><td>{{p.aadhaar }}</td><td>{{p.dob }}</td><td>{{p.pan }}</td><td>{{p.salary }}</td><td>{{p.selfOrFamily }}</td>
         <td>{{p.allowances }}</td><td>{{p.bankDetails.name }}</td><td>{{p.bankDetails.number }}</td><td>{{p.bankDetails.publicOrPrivate }}</td>
-        <td><button type="submit" style="color: whitesmoke; background-color: blue;" (click)="calcPension(p,i)" class = "btn-submit" aria-label="Submit"></button></td></tr>
+        <td><a class="btn btn-large btn-primary" data-toggle="confirmation" (click)="calcPension(p,i)">Process</a></td></tr>
 </table>

@@ -31,17 +31,33 @@ export class ProcessPensionerComponent implements OnInit {
     console.log(event.target.value);
     //console.log(this.pensionersCopy)
     this.pensioner =  event.target.value;
-    //this.pensioners = this.pensionersCopy;
+    this.pensioners = this.pensionersCopy;
     //console.log(this.pensioners);
+    if (event.target.value == "All")
+    {
+      this.pensioners = this.pensionersCopy;
+
+    }
+
+    else if (event.target.value != "All")
+    {
+      var selectedPensioner = this.pensioners.filter(function (pensioner) {
+        return pensioner.aadhaar == event.target.value;
+        console.log(pensioner.aadhaar);
+      })
+      this.pensioners = selectedPensioner;
+
+    
+    }
 
     
       //console.log(this.pensioner);
-      var promise = this.pensionerService.getPensionerByAadhaar(this.pensioner);
-      promise.subscribe((response) => {
-        console.log(response);
-        this.pensioners = response as Pensioner[];
-        //this.pensionersCopy = this.pensioners;
-    })
+    //   var promise = this.pensionerService.getPensionerByAadhaar(this.pensioner);
+    //   promise.subscribe((response) => {
+    //     console.log(response);
+    //     this.pensioners = response as Pensioner[];
+    //     //this.pensionersCopy = this.pensioners;
+    // })
 
     
 
