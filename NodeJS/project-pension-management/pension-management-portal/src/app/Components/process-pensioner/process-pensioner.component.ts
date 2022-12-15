@@ -11,6 +11,10 @@ export class ProcessPensionerComponent implements OnInit {
   pensioners: Pensioner[] = [];
   pensionersCopy: Pensioner[] = [];
   pensioner = "";
+  isProcessed = false;
+  pensionAmount = 0;
+  bankServiceCharge = 0;
+  selectedPensioner = "";
 
   constructor(public pensionerService: PensionerService) { }
 
@@ -19,7 +23,8 @@ export class ProcessPensionerComponent implements OnInit {
     const promise = this.pensionerService.getPensioners();
     promise.subscribe((response) => {
       console.log(response);
-      this.pensionersCopy = response as Pensioner[];
+      this.pensioners = response as Pensioner[];
+      this.pensionersCopy = this.pensioners;
      
        
         //this.count++;
@@ -31,6 +36,7 @@ export class ProcessPensionerComponent implements OnInit {
     console.log(event.target.value);
     //console.log(this.pensionersCopy)
     this.pensioner =  event.target.value;
+    console.log(this.pensioner);
     this.pensioners = this.pensionersCopy;
     //console.log(this.pensioners);
     if (event.target.value == "All")
@@ -42,10 +48,13 @@ export class ProcessPensionerComponent implements OnInit {
     else if (event.target.value != "All")
     {
       var selectedPensioner = this.pensioners.filter(function (pensioner) {
+        
         return pensioner.aadhaar == event.target.value;
+        
         console.log(pensioner.aadhaar);
       })
       this.pensioners = selectedPensioner;
+      
 
     
     }
@@ -65,30 +74,33 @@ export class ProcessPensionerComponent implements OnInit {
   }
 
   calcPension(pensioner:any, index:any){
+    this.isProcessed = true;
+    console.log(this.pensioner);
+    this.selectedPensioner = this.pensioner;
     console.log(pensioner.aadhaar);
-    let pensionAmount = 0;
-    let bankServiceCharge = 0;
+    // let pensionAmount = 0;
+    // let bankServiceCharge = 0;
     if (pensioner.selfOrFamily == "Self")
     {
-        pensionAmount = (pensioner.salary * 0.8) + pensioner.allowances
+        this.pensionAmount = (pensioner.salary * 0.8) + pensioner.allowances
     }
     else if (pensioner.selfOrFamily == "Family")
     {
-        pensionAmount = (pensioner.salary * 0.5) + pensioner.allowances
+        this.pensionAmount = (pensioner.salary * 0.5) + pensioner.allowances
     }
 
     if (pensioner.bankDetails.publicOrPrivate == "Public")
     {
-        bankServiceCharge = 500;
+        this.bankServiceCharge = 500;
     }
     else if (pensioner.bankDetails.publicOrPrivate == "Private")
     {
-        bankServiceCharge = 550;
+        this.bankServiceCharge = 550;
     }
     //pensionAmount = newPensionAmount;
-    console.log(pensionAmount);
-    console.log(bankServiceCharge);
-    alert("Details for "+pensioner.name+"\nPension Amount: "+pensionAmount+"\nBank Service Charge: "+bankServiceCharge);
+    console.log(this.pensionAmount);
+    console.log(this.bankServiceCharge);
+    alert("Details for "+pensioner.name+"\nPension Amount: "+this.pensionAmount+"\nBank Service Charge: "+this.bankServiceCharge);
   }
 
 }

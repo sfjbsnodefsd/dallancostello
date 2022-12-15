@@ -18,4 +18,4 @@ allows for the user to see all the pesnioners currently in the system. There is 
 of the pensioners, allowing the user to view the records of each pensioner. There is also a delete button at the end of each
 which allows for the removal of the pensioner from the system. The user can also navigate to the add pensioner page which provides
 a pensioner form, which a user can fill out to add a pensioner to the system. The process pensioner page allows the user to
-get a quote on their selected pensioner. 
+get a quote on their selected pensioner. This is in the form of an alert message as well as an additional table below the pensioner details table.

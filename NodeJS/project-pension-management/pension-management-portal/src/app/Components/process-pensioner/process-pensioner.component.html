@@ -10,3 +10,7 @@
         <td>{{p.allowances }}</td><td>{{p.bankDetails.name }}</td><td>{{p.bankDetails.number }}</td><td>{{p.bankDetails.publicOrPrivate }}</td>
         <td><a class="btn btn-large btn-primary" data-toggle="confirmation" (click)="calcPension(p,i)">Process</a></td></tr>
 </table>
+<table class="table table-striped" *ngIf="isProcessed">
+    <thead><th>Pension Amount</th><th>Bank Service Charge</th></thead>
+    <tr><td>{{pensionAmount }}</td><td>{{bankServiceCharge }}</td></tr>
+</table>
